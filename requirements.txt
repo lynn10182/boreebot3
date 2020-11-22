@@ -1,0 +1,4 @@
+git+https://github.com/lynn10182/boreebot2
+discord.py==1.5.1
+youtube-dl==2020.11.19
+youtube-search==1.1.1
