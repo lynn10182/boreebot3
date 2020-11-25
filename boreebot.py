@@ -55,14 +55,6 @@ async def on_message(message):
         except discord.DiscordException:
             return
         
-     if content.startswith("보리야검색"):
-        msg1 = content.split(' ')
-        await channel.send(embed=search.search_youtube(msg1[1:]))
-        
-     if content.startswith("보리야사진"):
-        msg1 = content.split(' ')
-        await channel.send(embed=search.search_image(msg1[1:]))
-        
     await client.process_commands(message)
     
 @client.command() 
