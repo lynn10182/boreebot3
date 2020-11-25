@@ -74,10 +74,6 @@ async def 안녕(ctx, *args):
     await ctx.send(f"{ctx.author.name}님 안녕하세요? 보리랑 같이 놀아요! ``보리야 도움말``")
 
 @client.command() 
-async def 몇시(ctx, *args):
-    await ctx.send(f"현재 시각은 {d.hour}시 {d.minute}분 {d.second}초 입니다.")
-
-@client.command() 
 async def 오늘(ctx, *args):
     await ctx.send(f"오늘은 {datetime.date.today()}!")
 
@@ -96,12 +92,12 @@ async def 뭐해(ctx, *args):
 
 @client.command()
 async def 공지(ctx, *args):
-    await ctx.send("여러분!!! 보리봇!!! 호스팅!!! 성공했어요!!! ```명령어 띄어쓰기가 헷갈리신다면 뒤에 무언가가 붙는 건 붙여쓰고, 붙지 않는 건 띄어쓰시면 됩니다. 보리야 말해는 뺴고 ㅋㅋㄹ```")
+    await ctx.send("***여러분!!! 보리봇!!! 호스팅!!! 성공했어요!!!*** 달력 기능은 없앰 ㅋ 한정판이었던걸로... ```명령어 띄어쓰기가 헷갈리신다면 뒤에 무언가가 붙는 건 붙여쓰고, 붙지 않는 건 띄어쓰시면 됩니다. 보리야 말해는 뺴고 ㅋㅋㄹ```")
 
 @client.command()
 async def 도움말(ctx, *args):
     await ctx.send(f"{ctx.author.name}님 안녕하세요? 봇 도움말을 안내해 드리겠습니다.")
-    await ctx.send(embed=discord.Embed(title="명령어", description="```보리야 말해 <할 말>``` ```보리야 주사위``` ```보리야 몇시``` ```보리야 오늘``` ```보리야 공지``` ```보리야뽑기 <항목1> <항목2> ...``` ```보리야삭제 <지울 메시지 수>```"))   
+    await ctx.send(embed=discord.Embed(title="명령어", description="```보리야 말해 <할 말>``` ```보리야 주사위``` ```보리야 오늘``` ```보리야 공지``` ```보리야뽑기 <항목1> <항목2> ...``` ```보리야삭제 <지울 메시지 수>```"))   
     
 access_token = os.environ['BOT_TOKEN']
 client.run(access_token) 
