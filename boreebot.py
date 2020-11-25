@@ -5,6 +5,7 @@ from random import randint
 import random
 import datetime
 import calendar
+import asyncio
 
 client = commands.Bot(command_prefix="보리야 ") 
 d = datetime.datetime.now()
