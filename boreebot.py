@@ -99,4 +99,5 @@ async def 도움말(ctx, *args):
     await ctx.send(f"{ctx.author.name}님 안녕하세요? 봇 도움말을 안내해 드리겠습니다.")
     await ctx.send(embed=discord.Embed(title="명령어", description="```보리야 말해 <할 말>``` ```보리야 주사위``` ```보리야 달력``` ```보리야 공지``` ```보리야뽑기 <항목1> <항목2> ...``` ```보리야삭제 <지울 메시지 수>```"))   
     
-client.run('NzY2Mjk1OTI3NTYwMzM5NDg4.X4hSsg.OAr3LAm2LU72VrWHBJmrlP-CX9c') 
+access_token = os.environ['BOT_TOKEN']
+client.run(access_token) 
