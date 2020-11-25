@@ -5,6 +5,8 @@ from random import randint
 import random
 import datetime
 import calendar
+import youtube_dl
+from Modules.search import Search
 
 client = commands.Bot(command_prefix="보리야 ") 
 d = datetime.datetime.now()
@@ -23,7 +25,8 @@ async def on_message(message):
     channel = message.channel  
     content = message.content
     now = datetime.datetime.now()
-
+    search = Search()
+    
     if author.bot:
         return None 
    
@@ -51,6 +54,14 @@ async def on_message(message):
                 await channel.send("100개 이상의 메시지는 삭제할 수 없습니다.")
         except discord.DiscordException:
             return
+        
+     if content.startswith("보리야검색"):
+        msg1 = content.split(' ')
+        await channel.send(embed=search.search_youtube(msg1[1:]))
+        
+     if content.startswith("보리야사진"):
+        msg1 = content.split(' ')
+        await channel.send(embed=search.search_image(msg1[1:]))
         
     await client.process_commands(message)
     
