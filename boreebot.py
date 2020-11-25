@@ -96,7 +96,7 @@ async def 뭐해(ctx, *args):
 async def 공지(ctx):
     message = await ctx.send("나 김볼희... 도배에 대해 사과의 말씀 올린다... 죄송하ㄷ...ㄷ다닫ㄷ닫ㄷ다")
     await asyncio.sleep(4)
-    await message.edit("~~(죽음)~~")
+    await message.edit(content="~~(죽음)~~")
 
 @client.command()
 async def 도움말(ctx, *args):
