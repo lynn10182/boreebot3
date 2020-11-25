@@ -93,8 +93,10 @@ async def 뭐해(ctx, *args):
     await ctx.send(f"{random.choice(responses)}")
 
 @client.command()
-async def 공지(ctx, *args):
-    await ctx.send("***여러분!!! 보리봇!!! 호스팅!!! 성공했어요!!!*** 달력 기능은 없앰 ㅋ 한정판이었던걸로... ```명령어 띄어쓰기가 헷갈리신다면 뒤에 무언가가 붙는 건 붙여쓰고, 붙지 않는 건 띄어쓰시면 됩니다. 보리야 말해는 뺴고 ㅋㅋㄹ```")
+async def 공지(ctx):
+    message = await ctx.send("나 김볼희... 도배에 대해 사과의 말씀 올린다... 죄송하ㄷ...ㄷ다닫ㄷ닫ㄷ다")
+    await asyncio.sleep(4)
+    await message.edit("~~(죽음)~~")
 
 @client.command()
 async def 도움말(ctx, *args):
