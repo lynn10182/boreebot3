@@ -60,7 +60,8 @@ async def 말해(ctx, *args):
     content = ' '.join(args) 
     
     if args == (): 
-        await ctx.send("뭘 말해요? 님 바보라고요?")  
+        await ctx.send("뭘 말해요? 님 바보라고요?") 
+        await message.edit("별 말 안했어요 ㅎㅎ")
         return None
 
     await ctx.send(content)  
