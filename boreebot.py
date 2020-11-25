@@ -7,6 +7,7 @@ import datetime
 import calendar
 
 client = commands.Bot(command_prefix="보리야 ") 
+d = datetime.datetime.now()
 
 @client.event
 async def on_ready(): 
@@ -50,12 +51,7 @@ async def on_message(message):
                 await channel.send("100개 이상의 메시지는 삭제할 수 없습니다.")
         except discord.DiscordException:
             return
-
-    if content == "보리야 달력":
-        title = f"2020년 11월의 달력입니다." 
-        em = discord.Embed(title="2020년 11월 달력", description=f"``{calendar.month(2020, 11)}``")
-        await channel.send(embed=em)
-
+        
     await client.process_commands(message)
     
 @client.command() 
@@ -78,6 +74,14 @@ async def 안녕(ctx, *args):
     await ctx.send(f"{ctx.author.name}님 안녕하세요? 보리랑 같이 놀아요! ``보리야 도움말``")
 
 @client.command() 
+async def 몇시(ctx, *args):
+    await ctx.send(f"현재 시각은 {d.hour}시 {d.minute}분 {d.second}초 입니다.")
+
+@client.command() 
+async def 오늘(ctx, *args):
+    await ctx.send(f"오늘은 {datetime.date.today()}!")
+
+@client.command() 
 async def 뭐해(ctx, *args):
     responses = [f"어떻게 하면 {ctx.author.name}님을 재밌게 해드릴 수 있을지 생각중이에요!",
                  "제 상태메시지를 보세요!",
@@ -97,7 +101,7 @@ async def 공지(ctx, *args):
 @client.command()
 async def 도움말(ctx, *args):
     await ctx.send(f"{ctx.author.name}님 안녕하세요? 봇 도움말을 안내해 드리겠습니다.")
-    await ctx.send(embed=discord.Embed(title="명령어", description="```보리야 말해 <할 말>``` ```보리야 주사위``` ```보리야 달력``` ```보리야 공지``` ```보리야뽑기 <항목1> <항목2> ...``` ```보리야삭제 <지울 메시지 수>```"))   
+    await ctx.send(embed=discord.Embed(title="명령어", description="```보리야 말해 <할 말>``` ```보리야 주사위``` ```보리야 몇시``` ```보리야 오늘``` ```보리야 공지``` ```보리야뽑기 <항목1> <항목2> ...``` ```보리야삭제 <지울 메시지 수>```"))   
     
 access_token = os.environ['BOT_TOKEN']
 client.run(access_token) 
