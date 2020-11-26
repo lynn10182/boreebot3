@@ -91,6 +91,29 @@ async def 뭐해(ctx, *args):
                  "개발자님이 써주신 공지를 읽고 있어요! 전 언제쯤 알파고보다 똑똑한 천재봇으로 이름을 알릴 수 있을까요? ``보리야 공지``"]
     await ctx.send(f"{random.choice(responses)}")
 
+@client.command() 
+async def 자니(ctx, *args):
+    responses2 = ["*밖이야...*?",
+                 "*자는구나...*",
+                 "*많이 보고싶다...*",
+                 "*보면 연락줘...*",
+                 "*곧 생일이지...? 축하해...*",
+                 "*우리.. 좋았잖아...*",
+                 "*그래... 잘자...*",
+                 "*난 너가 많이 그리워...*",
+                 "*우리... 그때로 다시 돌아갈 수 있을까...?*"]
+    await ctx.send(f"{random.choice(responses2)}")
+
+@client.command()
+async def 자는구나(ctx):
+    await ctx.send("다음 말이 예상이 가는 건 기분탓?")
+
+@client.command()
+async def 잘자(ctx):
+    message = await ctx.send("**그만해 역겨워**")
+    await asyncio.sleep(4)
+    await message.edit(content="제가 별 말 했나요? ㅎㅎ")
+    
 @client.command()
 async def 공지(ctx):
     message = await ctx.send("나 김볼희... 도배에 대해 사과의 말씀 올린다... 죄송하ㄷ...ㄷ다닫ㄷ닫ㄷ다")
