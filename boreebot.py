@@ -7,6 +7,8 @@ import datetime
 import calendar
 import asyncio
 
+import Equiz
+
 client = commands.Bot(command_prefix="보리야 ") 
 d = datetime.datetime.now()
 
@@ -53,6 +55,27 @@ async def on_message(message):
         except discord.DiscordException:
             return
         
+    if message.content.startswith("!logoff"):
+        await client.send_message(message.channel, "빠이요!")
+        await client.close()
+        exit()
+        
+    elif (message.content.startswith('!halt') or 
+          message.content.startswith('!stop')):
+        await client.send_message(message.channel, 'Leaving server. BYE!', tts=True)
+        await quiz.stop()
+    elif (message.content.startswith('!reset')):
+        await quiz.reset()        
+    elif (message.content.startswith('!quiz') or 
+          message.content.startswith('!ask')):
+        await quiz.start(message.channel)      
+    elif (message.content.startswith('!scores')):
+        await quiz.print_scores()    
+    elif (message.content.startswith('!next')):
+        await quiz.next_question(message.channel)
+    elif quiz is not None and quiz.started():
+        await quiz.answer_question(message)
+
     await client.process_commands(message)
     
 @client.command() 
@@ -61,10 +84,9 @@ async def 말해(ctx, *args):
     content = ' '.join(args) 
     
     if args == (): 
-        message = await ctx.send("뭘 말해요? 님 바보라고요?") 
-        await asyncio.sleep(2)
-        await message.edit("별 말 안했어요 ㅎㅎ") 
+        await ctx.send("뭘 말해요? 님 바보라고요?")  
         return None
+
     await ctx.send(content)  
 
 @client.command() 
@@ -95,7 +117,7 @@ async def 뭐해(ctx, *args):
 @client.command()
 async def 공지(ctx):
     message = await ctx.send("나 김볼희... 도배에 대해 사과의 말씀 올린다... 죄송하ㄷ...ㄷ다닫ㄷ닫ㄷ다")
-    await asyncio.sleep(2)
+    await asyncio.sleep(4)
     await message.edit(content="***(죽음)***")
 
 @client.command()
