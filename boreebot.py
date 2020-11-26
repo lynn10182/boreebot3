@@ -7,8 +7,6 @@ import datetime
 import calendar
 import asyncio
 
-import Equiz
-
 client = commands.Bot(command_prefix="보리야 ") 
 d = datetime.datetime.now()
 
@@ -54,28 +52,7 @@ async def on_message(message):
                 await channel.send("100개 이상의 메시지는 삭제할 수 없습니다.")
         except discord.DiscordException:
             return
-        
-    if message.content.startswith("!logoff"):
-        await client.send_message(message.channel, "빠이요!")
-        await client.close()
-        exit()
-        
-    elif (message.content.startswith('!halt') or 
-          message.content.startswith('!stop')):
-        await client.send_message(message.channel, 'Leaving server. BYE!', tts=True)
-        await quiz.stop()
-    elif (message.content.startswith('!reset')):
-        await quiz.reset()        
-    elif (message.content.startswith('!quiz') or 
-          message.content.startswith('!ask')):
-        await quiz.start(message.channel)      
-    elif (message.content.startswith('!scores')):
-        await quiz.print_scores()    
-    elif (message.content.startswith('!next')):
-        await quiz.next_question(message.channel)
-    elif quiz is not None and quiz.started():
-        await quiz.answer_question(message)
-
+      
     await client.process_commands(message)
     
 @client.command() 
