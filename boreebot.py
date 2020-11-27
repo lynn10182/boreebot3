@@ -16,7 +16,7 @@ async def on_ready():
     print('start')
     await client.change_presence(
                                          status=discord.Status.online,
-                                         activity=discord.Game(name="보리야... 자니...?"))  
+                                         activity=discord.Game(name="보리가 발전하는 중"))  
 
 @client.event
 async def on_message(message):  
@@ -115,15 +115,23 @@ async def 잘자(ctx):
     await message.edit(content="제가 별 말 했나요? ㅎㅎ")
     
 @client.command()
+async def 바보(ctx):
+    message = await ctx.send("**님이 더 바보임**")
+    await asyncio.sleep(2)
+    await message.edit(content="제가 별 말 했나요? ㅎㅎ")
+
+@client.command()
 async def 공지(ctx):
-    message = await ctx.send("나 김볼희... 도배에 대해 사과의 말씀 올린다... 죄송하ㄷ...ㄷ다닫ㄷ닫ㄷ다")
-    await asyncio.sleep(4)
-    await message.edit(content="***(죽음)***")
+    message = await ctx.send("나 김볼희에게 개발자님이 커맨드 예외처리를 넣어주셨다! 이제 아무말이나 해도 알아먹는다! ~~모르는 말은 똑같은 반응만 반복할거임~~")
 
 @client.command()
 async def 도움말(ctx, *args):
     await ctx.send(f"{ctx.author.name}님 안녕하세요? 봇 도움말을 안내해 드리겠습니다.")
     await ctx.send(embed=discord.Embed(title="명령어", description="```보리야 말해 <할 말>``` ```보리야 주사위``` ```보리야 오늘``` ```보리야 공지``` ```보리야뽑기 <항목1> <항목2> ...``` ```보리야삭제 <지울 메시지 수>```"))   
+    
+@client.event
+async def on_command_error(ctx, error):
+    await ctx.send("무슨 말인지 모르겠어요!")
     
 access_token = os.environ['BOT_TOKEN']
 client.run(access_token) 
