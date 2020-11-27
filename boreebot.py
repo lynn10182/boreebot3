@@ -16,7 +16,7 @@ async def on_ready():
     print('start')
     await client.change_presence(
                                          status=discord.Status.online,
-                                         activity=discord.Game(name="보리가 발전하는 중"))  
+                                         activity=discord.Game(name="보리~ 보리~ 쌀!"))  
 
 @client.event
 async def on_message(message):  
