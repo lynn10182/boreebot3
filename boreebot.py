@@ -111,7 +111,7 @@ async def 자는구나(ctx):
 @client.command()
 async def 잘자(ctx):
     message = await ctx.send("**그만해 역겨워**")
-    await asyncio.sleep(4)
+    await asyncio.sleep(2)
     await message.edit(content="제가 별 말 했나요? ㅎㅎ")
     
 @client.command()
@@ -120,6 +120,12 @@ async def 바보(ctx):
     await asyncio.sleep(2)
     await message.edit(content="제가 별 말 했나요? ㅎㅎ")
 
+@client.command()
+async def 시간(ctx):
+    message = await ctx.send("그 기능은 개발자님이 없애신지 오랜데... **바보 ㅋㅋ**")
+    await asyncio.sleep(3)
+    await message.edit(content="제가 별 말 했나요? ㅎㅎ")
+    
 @client.command()
 async def 공지(ctx):
     message = await ctx.send("나 김볼희에게 개발자님이 커맨드 예외처리를 넣어주셨다! 이제 아무말이나 해도 알아먹는다! ~~모르는 말은 똑같은 반응만 반복할거임~~")
