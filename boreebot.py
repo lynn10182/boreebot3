@@ -6,6 +6,7 @@ import random
 import datetime
 import calendar
 import asyncio
+import openpyxl
 
 client = commands.Bot(command_prefix="보리야 ") 
 d = datetime.datetime.now()
@@ -53,6 +54,27 @@ async def on_message(message):
         except discord.DiscordException:
             return
       
+    if content.startswith("보리야학습"):
+        file = openpyxl.load_workbook("기억.xlsx")
+        sheet = file.active
+        learn = content.split(" ")
+        for i in range(1, 101):
+            if sheet["A" + str(i)].value == "-":
+                sheet["A" + str(i)].value = learn[1]
+                sheet["B" + str(i)].value = learn[2]
+                await channel.send("단어를 학습했습니다.")
+                break
+        file.save("기억.xlsx")
+
+    if content.startswith("보리야기억"):
+        file = openpyxl.load_workbook("기억.xlsx")
+        sheet = file.active
+        memory = content.split(" ")
+        for i in range(1, 101):
+            if sheet["A" + str(i)].value == memory[1]:
+                await channel.send(sheet["B" + str(i)].value)
+                break
+        
     await client.process_commands(message)
     
 @client.command() 
