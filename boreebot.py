@@ -54,7 +54,7 @@ async def on_message(message):
         except discord.DiscordException:
             return
       
-    if content.startswith("보리야학습"):
+    if content.startswith("보리야배워"):
         file = openpyxl.load_workbook("기억.xlsx")
         sheet = file.active
         learn = content.split(" ")
@@ -62,7 +62,7 @@ async def on_message(message):
             if sheet["A" + str(i)].value == "-":
                 sheet["A" + str(i)].value = learn[1]
                 sheet["B" + str(i)].value = learn[2]
-                await channel.send("단어를 학습했습니다.")
+                await channel.send("단어를 배웠습니다. 보리야기억으로 물어봐주세요!")
                 break
         file.save("기억.xlsx")
 
