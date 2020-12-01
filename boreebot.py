@@ -6,7 +6,6 @@ import random
 import datetime
 import calendar
 import asyncio
-import openpyxl
 
 client = commands.Bot(command_prefix="보리야 ") 
 d = datetime.datetime.now()
@@ -53,27 +52,6 @@ async def on_message(message):
                 await channel.send("100개 이상의 메시지는 삭제할 수 없습니다.")
         except discord.DiscordException:
             return
-      
-    if content.startswith("보리야배워"):
-        file = openpyxl.load_workbook("기억.xlsx")
-        sheet = file.active
-        learn = content.split(" ")
-        for i in range(1, 101):
-            if sheet["A" + str(i)].value == "-" or sheet["A" + str(i)].value == learn[1]:
-                sheet["A" + str(i)].value = learn[1]
-                sheet["B" + str(i)].value = learn[2]
-                await channel.send("단어를 배웠습니다. 보리야기억으로 물어봐주세요!")
-                break
-        file.save("기억.xlsx")
-
-    if content.startswith("보리야기억"):
-        file = openpyxl.load_workbook("기억.xlsx")
-        sheet = file.active
-        memory = content.split(" ")
-        for i in range(1, 101):
-            if sheet["A" + str(i)].value == memory[1]:
-                await channel.send(sheet["B" + str(i)].value)
-                break
         
     await client.process_commands(message)
     
