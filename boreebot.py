@@ -59,7 +59,7 @@ async def on_message(message):
         sheet = file.active
         learn = content.split(" ")
         for i in range(1, 101):
-            if sheet["A" + str(i)].value == "-":
+            if sheet["A" + str(i)].value == "-" or sheet["A" + str(i)].value == learn[1]:
                 sheet["A" + str(i)].value = learn[1]
                 sheet["B" + str(i)].value = learn[2]
                 await channel.send("단어를 배웠습니다. 보리야기억으로 물어봐주세요!")
